@@ -8,7 +8,10 @@ def get_ratings(file):
     restaurant_ratings = {}
     # Giving user 3 choices
     while True:
-        choice = int(input('What would you like to do?\n[1] - See all the ratings\n[2] - Add a new restaurant and rating it\n[3] - Quit '))
+        try:
+            choice = int(input('What would you like to do?\n[1] - See all the ratings\n[2] - Add a new restaurant and rating it\n[3] - Quit '))
+        except ValueError:
+            continue
         
         # Exiting the function
         if choice == 3:
