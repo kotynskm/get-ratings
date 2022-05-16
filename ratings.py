@@ -28,7 +28,7 @@ def get_ratings(file):
         # Adding the restaurants to a dictionary 
         if len(restaurant_ratings) == 0:
             restaurant_ratings = {}
-        if choice == 1:
+        if choice == 1 or choice == 2:
             for line in open_file:
                 line = line.strip()
                 restaurants = line.split(":")
