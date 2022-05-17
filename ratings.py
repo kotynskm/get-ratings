@@ -12,7 +12,7 @@ def get_ratings(file):
             choice = int(input('What would you like to do?\n[1] - See all the ratings\n[2] - Add a new restaurant and rating it\n[3] - Quit '))
         except ValueError:
             continue
-        
+
         # Exiting the function
         if choice == 3:
             return "Goodbye"
@@ -25,7 +25,7 @@ def get_ratings(file):
                 except ValueError:
                     continue    
                 if type(rest_rating) == int and 1 <= rest_rating <= 5:
-                    restaurant_ratings = {new_rest: rest_rating}
+                    restaurant_ratings[new_rest] = rest_rating
                     break
 
         # Adding the restaurants to a dictionary 
