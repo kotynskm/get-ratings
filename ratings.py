@@ -52,9 +52,17 @@ def get_ratings(file):
             rest_keys = list(restaurant_ratings.keys())
             random_update = random.choice(rest_keys) 
             print(f'{random_update}')
-            random_rating = int(input('Rating: '))  
-            print(f'The restaurant {random_update} old rating was: {restaurant_ratings[random_update]}. The new rating is: {random_rating}')            
-            restaurant_ratings[random_update] = random_rating           
+
+            while True:
+                try:
+                    random_rating = int(input('Rating: '))
+                except ValueError:
+                    continue
+
+                if type(random_rating) == int and 1 <= random_rating <= 5:
+                    print(f'The restaurant {random_update} old rating was: {restaurant_ratings[random_update]}. The new rating is: {random_rating}')            
+                    restaurant_ratings[random_update] = random_rating
+                    break           
            
             
         
