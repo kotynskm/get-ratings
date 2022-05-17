@@ -9,13 +9,14 @@ def get_ratings(file):
     # Giving user 3 choices
     while True:
         try:
-            choice = int(input('What would you like to do?\n[1] - See all the ratings\n[2] - Add a new restaurant and rating it\n[3] - Quit '))
+            choice = int(input('What would you like to do?\n[1] - See all the ratings\n[2] - Add a new restaurant and rating it\n[3] - Quit\n[4] - Update restaurant rating: '))
         except ValueError:
             continue
 
         # Exiting the function
         if choice == 3:
             return "Goodbye"
+
         # Adding a new Restaurant rating
         if choice == 2:
             new_rest = input('Restaurant: ').strip().title()
@@ -31,7 +32,7 @@ def get_ratings(file):
         # Adding the restaurants to a dictionary 
         if len(restaurant_ratings) == 0:
             restaurant_ratings = {}
-        if choice == 1 or choice == 2:
+        if choice == 1 or choice == 2 or choice == 4:
             for line in open_file:
                 line = line.strip()
                 restaurants = line.split(":")
@@ -41,9 +42,20 @@ def get_ratings(file):
             sorted_restaurants = sorted(restaurant_ratings.items())
 
             # Printing all the restaurants and its ratings
-            for rest, rating in sorted_restaurants:
-                print(f"{rest} is rated {rating}")
-                    
+            if choice == 1:
+                for rest, rating in sorted_restaurants:
+                    print(f"{rest} is rated {rating}")
+
+        # Updating restaurant rating
+        if choice == 4:
+            import random
+            rest_keys = list(restaurant_ratings.keys())
+            random_update = random.choice(rest_keys) 
+            print(f'{random_update}')
+            random_rating = int(input('Rating: '))  
+            print(f'The restaurant {random_update} old rating was: {restaurant_ratings[random_update]}. The new rating is: {random_rating}')            
+            restaurant_ratings[random_update] = random_rating           
+           
             
         
 
